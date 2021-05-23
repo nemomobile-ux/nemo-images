@@ -77,7 +77,7 @@ jobs:
           sudo make -C arch-install-scripts-$pkgver check
           sudo make -C arch-install-scripts-$pkgver PREFIX=/usr install
 
-          sudo git clone --depth 1 --branch "nemomobile" https://github.com/nemomobile-ux/manjaro-arm-tools/
+          sudo git clone https://gitlab.manjaro.org/manjaro-arm/applications/manjaro-arm-tools
 
           install_m_a_tools() {
               pkgname=manjaro-arm-tools
@@ -111,7 +111,7 @@ jobs:
           VERSION: beta10
         run: |
           sudo mv -v /home/runner/work/$EDITION/$EDITION/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH
+          sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH -k https://img.nemomobile.net/manjaro/05.2020/stable/aarch64/nemomobile.db
           
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PATH .
