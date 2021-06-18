@@ -16,8 +16,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: beta10
-          release_name: Beta 10
+          tag_name: beta11
+          release_name: Beta 11
           draft: false
           prerelease: false
     outputs:
@@ -55,14 +55,8 @@ jobs:
           sudo make V=1
           sudo make install
           cd ..
-          sudo install -m644 pacman.conf.x86_64 /etc/pacman.conf
+          sudo install -m644 pacman.conf /etc/pacman.conf
           sudo install -m644 makepkg.conf /etc/
-          sudo sed -i /etc/makepkg.conf \
-            -e "s|@CARCH[@]|x86_64|g" \
-            -e "s|@CHOST[@]|x86_64-pc-linux-gnu|g" \
-            -e "s|@CARCHFLAGS[@]|-march=x86-64|g"
-          sudo install -m644 etc-pacman.d-gnupg.mount /usr/lib/systemd/system/etc-pacman.d-gnupg.mount
-          sudo install -m644 pacman-init.service /usr/lib/systemd/system/pacman-init.service
           sudo mkdir -p /etc/pacman.d
           sudo touch /etc/pacman.d/mirrorlist
           cd ..
@@ -108,7 +102,7 @@ jobs:
         env:
           EDITION: ${{ matrix.EDITION }}
           BRANCH: ${{ matrix.BRANCH }}
-          VERSION: beta10
+          VERSION: beta11
         run: |
           sudo mv -v /home/runner/work/$EDITION/$EDITION/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH -k https://pcmlich.fit.vutbr.cz/nemo/build-results-aarch64/packages/nemomobile.db
