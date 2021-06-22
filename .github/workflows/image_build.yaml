@@ -107,7 +107,7 @@ jobs:
           VERSION: beta11
         run: |
           find /home/runner/work -type d
-          sudo mv -v /home/runner/work/$EDITION/$EDITION/arm-profiles /usr/share/manjaro-arm-tools/profiles
+          sudo mv -v /home/runner/work/nemo-images/nemo-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH -k https://pcmlich.fit.vutbr.cz/nemo/build-results-aarch64/packages/nemomobile.db
           
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
