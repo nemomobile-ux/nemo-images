@@ -63,10 +63,7 @@ jobs:
           sudo touch /etc/pacman.d/mirrorlist
           cd ..
           
-          sudo wget https://gitlab.manjaro.org/packages/community/manjaro-
-          
-          
-          qemu-static/-/raw/master/qemu-static.conf -O /usr/lib/binfmt.d/qemu-static.conf
+          sudo wget https://gitlab.manjaro.org/packages/community/manjaro-qemu-static/-/raw/master/qemu-static.conf -O /usr/lib/binfmt.d/qemu-static.conf
           sudo service systemd-binfmt restart
           
           pkgver=23
