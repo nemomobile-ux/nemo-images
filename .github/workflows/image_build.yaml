@@ -1,8 +1,8 @@
 name: image_build
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '30 0 * * *'
+#  schedule:
+#    - cron:  '30 0 * * *'
 
 jobs:
   prepare_release:
@@ -63,7 +63,10 @@ jobs:
           sudo touch /etc/pacman.d/mirrorlist
           cd ..
           
-          sudo wget https://gitlab.manjaro.org/packages/community/manjaro-arm-qemu-static/-/raw/master/qemu-static.conf -O /usr/lib/binfmt.d/qemu-static.conf
+          sudo wget https://gitlab.manjaro.org/packages/community/manjaro-
+          
+          
+          qemu-static/-/raw/master/qemu-static.conf -O /usr/lib/binfmt.d/qemu-static.conf
           sudo service systemd-binfmt restart
           
           pkgver=23
@@ -106,6 +109,7 @@ jobs:
           BRANCH: ${{ matrix.BRANCH }}
           VERSION: beta11
         run: |
+          find /home/runner/work -type d
           sudo mv -v /home/runner/work/$EDITION/$EDITION/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH -k https://pcmlich.fit.vutbr.cz/nemo/build-results-aarch64/packages/nemomobile.db
           
