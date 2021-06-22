@@ -106,7 +106,6 @@ jobs:
           BRANCH: ${{ matrix.BRANCH }}
           VERSION: beta11
         run: |
-          find /home/runner/work -type d
           sudo mv -v /home/runner/work/nemo-images/nemo-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH -k https://pcmlich.fit.vutbr.cz/nemo/build-results-aarch64/packages/nemomobile.db
           
