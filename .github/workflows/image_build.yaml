@@ -107,7 +107,7 @@ jobs:
         env:
           EDITION: ${{ matrix.EDITION }}
           BRANCH: ${{ matrix.BRANCH }}
-          VERSION: beta11
+          VERSION: ${{ steps.date.outputs.date }}
         run: |
           sudo mv -v /home/runner/work/nemo-images/nemo-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d pinephone -e $EDITION -v $VERSION -b $BRANCH -k https://pcmlich.fit.vutbr.cz/nemo/build-results-aarch64/packages/nemomobile.db
