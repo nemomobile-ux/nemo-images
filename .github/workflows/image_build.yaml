@@ -1,8 +1,8 @@
 name: image_build
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '30 0 * * *'
+#  schedule:
+#    - cron:  '30 0 * * *'
 
 jobs:
   prepare_release:
