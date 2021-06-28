@@ -70,7 +70,7 @@ jobs:
           sudo service systemd-binfmt restart
           
           pkgver=23
-          sudo wget https://git.archlinux.org/arch-install-scripts.git/snapshot/arch-install-scripts-$pkgver.tar.gz
+          sudo wget https://github.com/archlinux/arch-install-scripts/archive/refs/tags/v${$pkgver}.tar.gz#/arch-install-scripts-$pkgver.tar.gz
           sudo tar -xvf arch-install-scripts-$pkgver.tar.gz
           sudo make -C arch-install-scripts-$pkgver
           sudo make -C arch-install-scripts-$pkgver check
