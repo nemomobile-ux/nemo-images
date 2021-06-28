@@ -69,7 +69,7 @@ jobs:
           sudo wget https://gitlab.manjaro.org/packages/community/manjaro-arm-qemu-static/-/raw/master/qemu-static.conf -O /usr/lib/binfmt.d/qemu-static.conf
           sudo service systemd-binfmt restart
           
-          pkgver=23
+          pkgver=24
           sudo wget https://codeload.github.com/archlinux/arch-install-scripts/tar.gz/refs/tags/v${pkgver} -O ./arch-install-scripts-$pkgver.tar.gz
           sudo tar -xvf arch-install-scripts-$pkgver.tar.gz
           sudo make -C arch-install-scripts-$pkgver
