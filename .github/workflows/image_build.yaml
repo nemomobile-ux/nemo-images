@@ -51,6 +51,7 @@ jobs:
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
           version: nightly-release-${{ steps.date.outputs.date }}
+          overlay-repo: https://pcmlich.fit.vutbr.cz/nemo/build-results-aarch64/packages/nemomobile.db
           #CI_PUB_KEY: "${{ secrets.CI_PUB_KEY }}"
           #CI_GPG_SECRET: "${{ secrets.CI_GPG_SECRET }}"
           #CI_GPG_PASSPHRASE: "${{ secrets.CI_GPG_PASSPHRASE }}"
