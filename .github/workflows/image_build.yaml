@@ -21,8 +21,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: beta12
-          release_name: Release Beta12
+          tag_name: nightly-release-${{ steps.date.outputs.date }}
+          release_name: nightly release ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
     outputs:
@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         DEVICE: [pinephone]
-        EDITION: [phosh]
+        EDITION: [nemomobile]
         BRANCH: [stable]
     steps:
       - 
@@ -46,16 +46,16 @@ jobs:
         id: image-build
         uses: manjaro-arm/rootfs@master
         with:
-          arm-profiles-repo: https://github.com/manjaro-pinephone/arm-profiles
+          arm-profiles-repo: https://github.com/jmlich/arm-profiles
           device: ${{ matrix.device }}
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
-          version: beta12
+          version: nightly-release-${{ steps.date.outputs.date }}
           #CI_PUB_KEY: "${{ secrets.CI_PUB_KEY }}"
           #CI_GPG_SECRET: "${{ secrets.CI_GPG_SECRET }}"
           #CI_GPG_PASSPHRASE: "${{ secrets.CI_GPG_PASSPHRASE }}"
       - 
-        id: upload_release 
+        id: upload_release
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
