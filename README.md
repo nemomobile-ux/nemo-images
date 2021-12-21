@@ -24,3 +24,7 @@ Images are build and uploaded in a relatively regular interval to [github releas
 user: manjaro
 password: 123456
 ```
+
+### links
+
+- [halium images](https://github.com/manjaro-libhybris/image-ci)
