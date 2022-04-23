@@ -49,7 +49,7 @@ jobs:
         id: image-build
         uses: manjaro-arm/rootfs@master
         with:
-          arm-profiles-repo: https://github.com/nemomobile-ux/arm-profiles
+          arm-profiles-repo: https://github.com/manjaro-pinephone/arm-profiles
           device: ${{ matrix.device }}
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
