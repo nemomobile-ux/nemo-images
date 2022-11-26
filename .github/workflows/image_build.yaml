@@ -34,7 +34,8 @@ jobs:
     needs: prepare_release
     strategy:
       matrix:
-        DEVICE: [pinephone, pinetab, pinephonepro]
+#        DEVICE: [pinephone, pinetab, pinephonepro]
+        DEVICE: [pinephone]
         EDITION: [nemomobile]
         BRANCH: [stable]
     steps:
