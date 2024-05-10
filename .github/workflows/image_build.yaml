@@ -37,7 +37,7 @@ jobs:
 #        DEVICE: [pinephone, pinetab, pinephonepro]
         DEVICE: [pinephone]
         EDITION: [nemomobile]
-        BRANCH: [testing]
+        BRANCH: [unstable]
     steps:
       - name: Get current date
         id: date
