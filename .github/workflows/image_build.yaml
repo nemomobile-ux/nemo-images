@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%Hh')"
+        run: echo "date=$(date +'%Y-%m-%dT%Hh')" >> $GITHUB_OUTPUT
       - 
         uses: styfle/cancel-workflow-action@0.11.0
         with:
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%Hh')"
+        run: echo "date=$(date +'%Y-%m-%dT%Hh')" >> $GITHUB_OUTPUT
       - 
         uses: styfle/cancel-workflow-action@0.11.0
         with:
