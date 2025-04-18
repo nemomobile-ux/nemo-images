@@ -6,7 +6,7 @@ on:
 
 jobs:
   prepare_release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Get current date
         id: date
@@ -30,7 +30,7 @@ jobs:
       release_id: ${{ steps.release.outputs.id }}
 
   release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: prepare_release
     strategy:
       matrix:
