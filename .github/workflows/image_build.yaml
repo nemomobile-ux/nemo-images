@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-24.04
     needs: prepare_release
     strategy:
+      fail-fast: false
       matrix:
         DEVICE: [pinephone, pinetab, pinephonepro, pinetab2]
         EDITION: [nemomobile]
