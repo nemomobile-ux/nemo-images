@@ -37,7 +37,7 @@ jobs:
       matrix:
         DEVICE: [pinephone, pinetab, pinephonepro, pinetab2]
         EDITION: [nemomobile]
-        BRANCH: [stable, testing, unstable]
+        BRANCH: [unstable]
     steps:
       - name: Get current date
         id: date
@@ -50,7 +50,7 @@ jobs:
         id: image-build
         uses: manjaro-arm/rootfs@master
         with:
-          arm-profiles-repo: https://github.com/manjaro-pinephone/arm-profiles
+          arm-profiles-repo: https://github.com/nemomobile-ux/arm-profiles
           device: ${{ matrix.device }}
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
