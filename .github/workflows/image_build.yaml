@@ -37,7 +37,7 @@ jobs:
       matrix:
         DEVICE: [pinephone, pinetab, pinephonepro, pinetab2]
         EDITION: [nemomobile]
-        BRANCH: [unstable]
+        BRANCH: [stable, testing, unstable]
     steps:
       - name: Get current date
         id: date
