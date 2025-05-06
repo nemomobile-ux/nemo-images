@@ -23,8 +23,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: nightly-${{ matrix.device }}-${{ matrix.branch }}-${{ steps.date.outputs.date }}
-          release_name: nightly build ${{ matrix.device }} ${{ matrix.branch }} ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.time.outputs.time }}
+          release_name: Release ${{ steps.time.outputs.time }}
           draft: false
           prerelease: false
     outputs:
