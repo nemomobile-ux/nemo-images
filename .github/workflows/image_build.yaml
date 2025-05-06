@@ -6,23 +6,25 @@ on:
 
 jobs:
   prepare_release:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%dT%Hh')" >> $GITHUB_OUTPUT
       - 
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.0
         with:
           access_token: ${{ github.token }}
+      - 
+        id: time
+        uses: boredland/get-time-action@2.0.0
+        with:
+          format: 'YYYYMMDDHHmm'
       - 
         id: release
         uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: nightly-release-${{ matrix.branch }}-${{ steps.date.outputs.date }}
-          release_name: nightly release ${{ matrix.branch }} ${{ steps.date.outputs.date }}
+          tag_name: nightly-${{ matrix.device }}-${{ matrix.branch }}-${{ steps.date.outputs.date }}
+          release_name: nightly build ${{ matrix.device }} ${{ matrix.branch }} ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
     outputs:
@@ -39,13 +41,15 @@ jobs:
         EDITION: [nemomobile]
         BRANCH: [stable, testing, unstable]
     steps:
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%dT%Hh')" >> $GITHUB_OUTPUT
       - 
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.0
         with:
           access_token: ${{ github.token }}
+      - 
+        id: time
+        uses: boredland/get-time-action@2.0.0
+        with:
+          format: 'YYYYMMDD'
       - 
         id: image-build
         uses: manjaro-arm/rootfs@master
@@ -54,7 +58,7 @@ jobs:
           device: ${{ matrix.device }}
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
-          version: nightly-release-${{ steps.date.outputs.date }}
+          version: nightly-${{ matrix.device }}-${{ matrix.branch }}-${{ steps.date.outputs.date }}
           #overlay-repo: https://img.nemomobile.net/manjaro/05.2023/stable/aarch64/nemomobile.db
           overlay-repo: https://img.nemomobile.net/manjaro/${{ matrix.branch }}/aarch64/nemomobile.db
           #CI_PUB_KEY: "${{ secrets.CI_PUB_KEY }}"
