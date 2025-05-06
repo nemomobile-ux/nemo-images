@@ -58,7 +58,7 @@ jobs:
           device: ${{ matrix.device }}
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
-          version: nightly-${{ matrix.device }}-${{ matrix.branch }}-${{ steps.date.outputs.date }}
+          version: ${{ steps.time.outputs.time }}
           #overlay-repo: https://img.nemomobile.net/manjaro/05.2023/stable/aarch64/nemomobile.db
           overlay-repo: https://img.nemomobile.net/manjaro/${{ matrix.branch }}/aarch64/nemomobile.db
           #CI_PUB_KEY: "${{ secrets.CI_PUB_KEY }}"
